@@ -7,6 +7,8 @@
     <!--CSS-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
 </head>
 <body>
 <header>
@@ -15,31 +17,36 @@
     </nav>
 </header>
 
-<section>
+<main>
 
     <div class="container" style="width: 60%; padding-bottom: 30px;">
 
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                <li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Posts</li>
             </ol>
         </nav>
 
+        <article>
+            <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px"><span th:text="${post.titulo}"></span></h1>
 
-        <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
-            <div class="card-body">
-                <p class="card-subtile mb-2 text-muted" style="font-size: 0.8rem;">
-                    <span th:text="${post.autor}"></span>
-                    <span th:text="${post.data}"></span>
-                </p>
+            <p class="card-subtitle mb-2 text-muted">
 
-                <a th:href="${(#mvc.url('PC#getPostsDetails').arg(0, post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px"><span th:text="${post.titulo}"></span></h4></a>
+                <i class="material-icons">person_outline</i>
+                <span th:text="${post.autor}"></span>
+                <br>
+                <i class="material-icons">date_range</i>
+                <span th:text="${post.data}"></span>
 
-                <p class="card-text"><span th:utext="${#strings.abbreviate(post.texto, 400)} "></span></p>
-            </div>
-        </div>
+            </p>
+
+            <section> <p class="card-text" style="margin-top: 40px;"><span th:utext="${post.texto}"></span></p></section>
+
+        </article>
+
     </div>
-</section>
+</main>
 
 </body>
 <footer></footer>
