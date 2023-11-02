@@ -13,15 +13,15 @@ public class PostService {
     @Autowired
     PostRepository postRepository;
 
-    List<Post> findAll() {
+    public List<Post> findAll() {
     return postRepository.findAll();
     };
 
-    Post findById(long id) {
+    public Post findById(long id) {
     return postRepository.findById(id).get();
     };
 
-    Post save(Post post) {
+    public Post save(Post post) {
     return postRepository.save(post);
     };
 }
